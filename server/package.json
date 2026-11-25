@@ -1,0 +1,16 @@
+{
+  "name": "nutritrack-backend",
+  "version": "2.0.0",
+  "description": "API RESTful com banco de dados relacional e motor de IA nutricional para NutriTrack",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "node --watch src/index.js",
+    "seed": "node src/seed.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2"
+  }
+}

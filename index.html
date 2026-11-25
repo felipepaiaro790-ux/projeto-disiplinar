@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NutriTrack | Nutrição Inteligente & Calculadora de Calorias</title>
+  <meta name="description" content="NutriTrack - Calcule suas calorias, avalie seu peso ideal e receba uma dieta personalizada com alimentos saudáveis.">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- CSS -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- OVERLAY DE RAÍZES DE ÁRVORES VERDES E NATUREZA -->
+  <div class="nature-background-overlay">
+    <!-- Raízes da Esquerda -->
+    <svg class="tree-root-svg root-left" viewBox="0 0 400 1200" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M-50,0 Q80,150 40,300 T120,600 T30,900 T150,1200" stroke="url(#root-grad-1)" stroke-width="9" stroke-linecap="round"/>
+      <path d="M40,300 Q140,380 200,420 T280,500" stroke="url(#root-grad-1)" stroke-width="6" stroke-linecap="round"/>
+      <path d="M120,600 Q220,650 310,720 T350,850" stroke="url(#root-grad-2)" stroke-width="4.5" stroke-linecap="round"/>
+      <path d="M30,900 Q120,980 220,1050" stroke="url(#root-grad-2)" stroke-width="4" stroke-linecap="round"/>
+      
+      <!-- Ramos finos de raízes -->
+      <path d="M200,420 Q240,400 270,380" stroke="url(#root-grad-1)" stroke-width="3" stroke-linecap="round"/>
+      <path d="M310,720 Q360,700 390,730" stroke="url(#root-grad-2)" stroke-width="2.5" stroke-linecap="round"/>
+      
+      <!-- Folhas verdes brotando das raízes -->
+      <path d="M280,500 C295,480 315,485 305,505 C295,525 275,515 280,500 Z" fill="#10b981" opacity="0.75"/>
+      <path d="M350,850 C365,835 385,840 375,860 C365,880 345,865 350,850 Z" fill="#059669" opacity="0.75"/>
+      <path d="M270,380 C280,370 295,375 290,390 C285,400 270,390 270,380 Z" fill="#34d399" opacity="0.8"/>
+      
+      <defs>
+        <linearGradient id="root-grad-1" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#10b981" stop-opacity="0.55"/>
+          <stop offset="100%" stop-color="#047857" stop-opacity="0.2"/>
+        </linearGradient>
+        <linearGradient id="root-grad-2" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#059669" stop-opacity="0.45"/>
+          <stop offset="100%" stop-color="#10b981" stop-opacity="0.15"/>
+        </linearGradient>
+      </defs>
+    </svg>
+
+    <!-- Raízes da Direita -->
+    <svg class="tree-root-svg root-right" viewBox="0 0 400 1200" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M450,-50 Q320,180 360,350 T280,680 T370,950 T250,1250" stroke="url(#root-grad-right)" stroke-width="9" stroke-linecap="round"/>
+      <path d="M360,350 Q240,420 180,480 T100,580" stroke="url(#root-grad-right)" stroke-width="6" stroke-linecap="round"/>
+      <path d="M280,680 Q160,740 90,820 T30,950" stroke="url(#root-grad-right-2)" stroke-width="4.5" stroke-linecap="round"/>
+      <path d="M370,950 Q260,1020 160,1100" stroke="url(#root-grad-right-2)" stroke-width="3.5" stroke-linecap="round"/>
+      
+      <!-- Folhas verdes -->
+      <path d="M100,580 C85,565 65,570 75,590 C85,610 105,595 100,580 Z" fill="#10b981" opacity="0.75"/>
+      <path d="M30,950 C15,935 0,940 10,960 C20,980 40,965 30,950 Z" fill="#059669" opacity="0.75"/>
+      
+      <defs>
+        <linearGradient id="root-grad-right" x1="100%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stop-color="#10b981" stop-opacity="0.55"/>
+          <stop offset="100%" stop-color="#059669" stop-opacity="0.2"/>
+        </linearGradient>
+        <linearGradient id="root-grad-right-2" x1="100%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stop-color="#047857" stop-opacity="0.45"/>
+          <stop offset="100%" stop-color="#34d399" stop-opacity="0.15"/>
+        </linearGradient>
+      </defs>
+    </svg>
+  </div>
+
+  <!-- NAUBARE / HEADER -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="#" class="logo">
+        <img src="logo.png" alt="NutriTrack Logo" class="logo-img">
+        <span class="logo-text">Nutri<span class="highlight">Track</span></span>
+      </a>
+
+      <nav class="nav-menu">
+        <a href="#inicio" class="nav-link active">Início</a>
+        <a href="#calculadora" class="nav-link">Calculadora</a>
+        <a href="#dieta" class="nav-link">Plano de Dieta</a>
+        <a href="#beneficios" class="nav-link">Diferenciais</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="btn btn-ai" onclick="openAiModal()">
+          <img src="ai_avatar.png" alt="NutriIA" class="ai-nav-icon">
+          <span>Nossa IA ✨</span>
+        </button>
+
+        <button class="btn btn-outline" id="open-login-btn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
+            <circle cx="12" cy="7" r="4"></circle>
+          </svg>
+          <span id="user-btn-text">Entrar</span>
+        </button>
+        <a href="#calculadora" class="btn btn-primary">Começar Agora</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="hero-section" id="inicio">
+    <div class="hero-bg-shapes">
+      <div class="shape shape-1"></div>
+      <div class="shape shape-2"></div>
+    </div>
+
+    <div class="container hero-container">
+      <div class="hero-content">
+        <div class="badge">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+          </svg>
+          Sua Saúde em Primeiro Lugar
+        </div>
+
+        <h1 class="hero-title">
+          Alimentação inteligente para atingir o seu <span class="gradient-text">peso ideal</span>.
+        </h1>
+
+        <p class="hero-description">
+          O <strong>NutriTrack</strong> calcula com precisão suas calorias diárias, avalia seu IMC e gera uma sugestão de dieta equilibrada com alimentos nutritivos e fáceis de preparar.
+        </p>
+
+        <div class="hero-cta">
+          <a href="#calculadora" class="btn btn-primary btn-lg">
+            <span>Calcular Minhas Calorias</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </a>
+          <a href="#dieta" class="btn btn-secondary btn-lg">
+            <span>Ver Exemplo de Dieta</span>
+          </a>
+        </div>
+
+        <div class="hero-stats">
+          <div class="stat-item">
+            <span class="stat-number">100%</span>
+            <span class="stat-label">Personalizado</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <span class="stat-number">Mifflin</span>
+            <span class="stat-label">Fórmula Precisa</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <span class="stat-number">Nutritivo</span>
+            <span class="stat-label">Alimentos Reais</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="hero-card-main">
+          <div class="hero-card-header">
+            <div class="hero-card-icon">🥗</div>
+            <div>
+              <h3>Resumo Nutricional Diário</h3>
+              <p>Meta estimada com base nas suas métricas</p>
+            </div>
+          </div>
+
+          <div class="hero-metric-box">
+            <div class="metric-info">
+              <span>Meta Calórica Diária</span>
+              <strong class="highlight-val">2.100 kcal</strong>
+            </div>
+            <div class="metric-bar-outer">
+              <div class="metric-bar-inner" style="width: 75%;"></div>
+            </div>
+          </div>
+
+          <div class="macros-grid-preview">
+            <div class="macro-badge protein">
+              <span class="macro-title">Proteínas</span>
+              <strong class="macro-val">140g</strong>
+            </div>
+            <div class="macro-badge carbs">
+              <span class="macro-title">Carbos</span>
+              <strong class="macro-val">210g</strong>
+            </div>
+            <div class="macro-badge fats">
+              <span class="macro-title">Gorduras</span>
+              <strong class="macro-val">60g</strong>
+            </div>
+          </div>
+
+          <div class="hero-card-footer">
+            <div class="check-item">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.5">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+              <span>Avaliação de Peso & IMC</span>
+            </div>
+            <div class="check-item">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.5">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+              <span>Dieta com alimentos saudáveis</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CALCULATOR SECTION -->
+  <section class="section-padding" id="calculadora">
+    <div class="container">
+      <div class="section-header text-center">
+        <span class="section-subtitle">Calculadora Nutricional</span>
+        <h2 class="section-title">Descubra suas Necessidades Calóricas e Peso Ideal</h2>
+        <p class="section-desc">Insira seus dados corporais para gerar métricas precisas de Metabolismo Basal (TMB), Gasto Calórico (TDEE) e IMC.</p>
+      </div>
+
+      <div class="calculator-card">
+        <form id="nutrition-form" onsubmit="event.preventDefault();">
+          <div class="form-grid">
+            
+            <!-- Gênero -->
+            <div class="form-group full-width">
+              <label class="form-label">Gênero Biológico</label>
+              <div class="gender-selector">
+                <label class="gender-option active" id="gender-male-label">
+                  <input type="radio" name="gender" value="male" checked onchange="selectGender('male')">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="10" cy="14" r="5"></circle>
+                    <line x1="19" y1="5" x2="13.6" y2="10.4"></line>
+                    <polyline points="19 10 19 5 14 5"></polyline>
+                  </svg>
+                  <span>Masculino</span>
+                </label>
+
+                <label class="gender-option" id="gender-female-label">
+                  <input type="radio" name="gender" value="female" onchange="selectGender('female')">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="9" r="5"></circle>
+                    <line x1="12" y1="14" x2="12" y2="21"></line>
+                    <line x1="9" y1="18" x2="15" y2="18"></line>
+                  </svg>
+                  <span>Feminino</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Idade -->
+            <div class="form-group">
+              <label for="age" class="form-label">Idade (anos)</label>
+              <div class="input-wrapper">
+                <input type="number" id="age" min="15" max="100" value="25" placeholder="Ex: 25" required>
+                <span class="input-unit">anos</span>
+              </div>
+            </div>
+
+            <!-- Peso -->
+            <div class="form-group">
+              <label for="weight" class="form-label">Peso Atual (kg)</label>
+              <div class="input-wrapper">
+                <input type="number" id="weight" step="0.1" min="30" max="250" value="72" placeholder="Ex: 72" required>
+                <span class="input-unit">kg</span>
+              </div>
+            </div>
+
+            <!-- Altura -->
+            <div class="form-group">
+              <label for="height" class="form-label">Altura (cm)</label>
+              <div class="input-wrapper">
+                <input type="number" id="height" min="100" max="230" value="175" placeholder="Ex: 175" required>
+                <span class="input-unit">cm</span>
+              </div>
+            </div>
+
+            <!-- Objetivo -->
+            <div class="form-group">
+              <label for="goal" class="form-label">Objetivo Principal</label>
+              <div class="select-wrapper">
+                <select id="goal" required>
+                  <option value="lose">Emagrecer / Perder Gordura (-500 kcal)</option>
+                  <option value="maintain" selected>Manter Peso Atual</option>
+                  <option value="gain">Ganhar Massa Muscular (+400 kcal)</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Nível de Atividade -->
+            <div class="form-group full-width">
+              <label for="activity" class="form-label">Nível de Atividade Física Diária</label>
+              <div class="select-wrapper">
+                <select id="activity" required>
+                  <option value="1.2">Sedentário (Trabalho sentado, pouco ou nenhum exercício)</option>
+                  <option value="1.375" selected>Levemente Ativo (Exercício leve 1-3 dias por semana)</option>
+                  <option value="1.55">Moderadamente Ativo (Exercício moderado 3-5 dias por semana)</option>
+                  <option value="1.725">Muito Ativo (Exercício pesado 6-7 dias por semana)</option>
+                  <option value="1.9">Extremamente Ativo (Treino diário intenso e trabalho físico)</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Preferência Alimentar -->
+            <div class="form-group full-width">
+              <label for="diet-pref" class="form-label">Estilo Alimentar Preferido</label>
+              <div class="select-wrapper">
+                <select id="diet-pref">
+                  <option value="traditional" selected>Equilibrada / Tradicional (Frango, Ovos, Arroz, Feijão, Frutas)</option>
+                  <option value="high-protein">Alta em Proteínas (Foco em construção muscular e saciedade)</option>
+                  <option value="low-carb">Low Carb (Menor teor de carboidratos complexos)</option>
+                  <option value="vegetarian">Vegetariana (Ovos, Laticínios, Leguminosas, Grãos)</option>
+                </select>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="form-footer">
+            <button type="submit" id="calculate-btn" class="btn btn-primary btn-block btn-lg">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+              </svg>
+              <span>Calcular e Gerar Dieta</span>
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <!-- RESULTS DISPLAY DASHBOARD -->
+      <div class="results-dashboard hidden" id="results-section">
+        <div class="dashboard-title-box text-center">
+          <span class="badge badge-success">Resultados Processados</span>
+          <h2>Sua Avaliação Física e Necessidades Calóricas</h2>
+        </div>
+
+        <div class="results-grid">
+          
+          <!-- Card 1: Avaliação de Peso & IMC -->
+          <div class="result-card">
+            <div class="card-header">
+              <div class="card-icon icon-blue">⚖️</div>
+              <div>
+                <h4>Avaliação de Peso e IMC</h4>
+                <p>Análise de composição de estatura</p>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="result-highlight-box">
+                <span class="lbl">Seu IMC Atual</span>
+                <div class="val-flex">
+                  <strong id="res-bmi">23.5</strong>
+                  <span class="bmi-tag tag-normal" id="res-bmi-tag">Peso Normal</span>
+                </div>
+              </div>
+
+              <div class="ideal-weight-box">
+                <div class="weight-row">
+                  <span>Faixa de Peso Ideal Sugerida:</span>
+                  <strong id="res-ideal-weight">56.7 kg - 76.5 kg</strong>
+                </div>
+                <div class="weight-row margin-top">
+                  <span>Situação Atual:</span>
+                  <strong id="res-weight-status" class="status-ok">Você está na faixa de peso saudável!</strong>
+                </div>
+              </div>
+
+              <div class="bmi-gauge">
+                <div class="gauge-bar">
+                  <div class="gauge-section seg-under" title="Abaixo do peso (< 18.5)"></div>
+                  <div class="gauge-section seg-normal" title="Peso Ideal (18.5 - 24.9)"></div>
+                  <div class="gauge-section seg-over" title="Sobrepeso (25 - 29.9)"></div>
+                  <div class="gauge-section seg-obese" title="Obesidade (>= 30)"></div>
+                </div>
+                <div class="gauge-pointer" id="bmi-pointer" style="left: 45%;">▲</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 2: Metabolismo e Meta Calórica -->
+          <div class="result-card">
+            <div class="card-header">
+              <div class="card-icon icon-orange">🔥</div>
+              <div>
+                <h4>Gasto Calórico & Meta</h4>
+                <p>Metabolismo e consumo diário</p>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="result-highlight-box highlight-orange">
+                <span class="lbl">Meta Calórica Recomendada</span>
+                <div class="val-flex">
+                  <strong id="res-target-calories">2.100</strong>
+                  <span class="unit-tag">kcal / dia</span>
+                </div>
+              </div>
+
+              <div class="stats-mini-grid">
+                <div class="mini-stat">
+                  <span>Taxa Basal (TMB)</span>
+                  <strong id="res-bmr">1.650 kcal</strong>
+                  <small>Energia mínima em repouso</small>
+                </div>
+                <div class="mini-stat">
+                  <span>Gasto Total (TDEE)</span>
+                  <strong id="res-tdee">2.268 kcal</strong>
+                  <small>Com atividades físicas</small>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 3: Distribuição de Macronutrientes -->
+          <div class="result-card full-width-card">
+            <div class="card-header">
+              <div class="card-icon icon-green">🥑</div>
+              <div>
+                <h4>Distribuição de Macronutrientes Diários</h4>
+                <p>Proporção ideal para nutrir o seu corpo com saúde</p>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="macros-full-grid">
+                
+                <div class="macro-item item-protein">
+                  <div class="macro-head">
+                    <span class="dot"></span>
+                    <span>Proteínas</span>
+                    <strong id="res-protein-g">140g</strong>
+                  </div>
+                  <span class="macro-cal" id="res-protein-cal">560 kcal (25%)</span>
+                  <p class="macro-desc">Essenciais para reparação muscular, imunidade e saciedade.</p>
+                </div>
+
+                <div class="macro-item item-carbs">
+                  <div class="macro-head">
+                    <span class="dot"></span>
+                    <span>Carboidratos</span>
+                    <strong id="res-carbs-g">236g</strong>
+                  </div>
+                  <span class="macro-cal" id="res-carbs-cal">945 kcal (45%)</span>
+                  <p class="macro-desc">Fonte principal de energia para o cérebro e atividades corporais.</p>
+                </div>
+
+                <div class="macro-item item-fats">
+                  <div class="macro-head">
+                    <span class="dot"></span>
+                    <span>Gorduras Saudáveis</span>
+                    <strong id="res-fats-g">70g</strong>
+                  </div>
+                  <span class="macro-cal" id="res-fats-cal">630 kcal (30%)</span>
+                  <p class="macro-desc">Importantes para produção hormonal e absorção de vitaminas.</p>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DIET PLAN GENERATOR SECTION -->
+  <section class="section-padding bg-light" id="dieta">
+    <div class="container">
+      <div class="section-header text-center">
+        <span class="section-subtitle">Nutrição de Alta Qualidade</span>
+        <h2 class="section-title">Seu Plano Alimentar Personalizado</h2>
+        <p class="section-desc">Elaborado com alimentos nutritivos, ricos em vitaminas e de fácil acesso para otimizar seus resultados com prazer ao comer.</p>
+      </div>
+
+      <div class="diet-plan-container">
+        
+        <!-- Controls bar -->
+        <div class="diet-controls-bar">
+          <div class="diet-info">
+            <span class="diet-badge" id="diet-pref-tag">Estilo: Tradicional Equilibrado</span>
+            <span class="diet-cal-total">Total: <strong id="diet-total-cal">2.100 kcal</strong></span>
+          </div>
+
+          <div class="diet-actions">
+            <button class="btn btn-secondary btn-sm" onclick="generateDietPlan()">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21.5 2v6h-6M2.13 15.57a10 10 0 1 0 4-8.4L2.5 9.5"></path>
+              </svg>
+              <span>Regerar Dieta</span>
+            </button>
+            <button class="btn btn-outline btn-sm" onclick="window.print()">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="6 9 6 2 18 2 18 9"></polyline>
+                <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+                <rect x="6" y="14" width="12" height="8"></rect>
+              </svg>
+              <span>Imprimir / Salvar PDF</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Meals Grid -->
+        <div class="meals-grid" id="meals-container">
+          <!-- Dinamicamente preenchido via JavaScript -->
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- BENEFITS / DIFFERENTIALS -->
+  <section class="section-padding" id="beneficios">
+    <div class="container">
+      <div class="section-header text-center">
+        <span class="section-subtitle">Por que escolher o NutriTrack</span>
+        <h2 class="section-title">Simplicidade e Ciência para sua Rotina</h2>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">📊</div>
+          <h3>Cálculos com Base Científica</h3>
+          <p>Utilizamos as equações de Mifflin-St Jeor e estatística nutricional consagrada para determinar seus gastos energéticos reais.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">🍎</div>
+          <h3>Alimentos Acessíveis e Nutritivos</h3>
+          <p>Nada de dietas mirabolantes ou caras. Focamos em alimentos de verdade que trazem saciedade e vitalidade ao seu dia a dia.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">⚡</div>
+          <h3>Fácil e Sem Complicação</h3>
+          <p>Interface leve, limpa e intuitiva projetada para você obter seu plano em menos de 1 minuto, em qualquer dispositivo.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer-container">
+      <div class="footer-brand">
+        <a href="#" class="logo">
+          <img src="logo.png" alt="NutriTrack Logo" class="logo-img">
+          <span class="logo-text">Nutri<span class="highlight">Track</span></span>
+        </a>
+        <p>Sua plataforma completa de cálculo nutricional e planejamento alimentar saudável.</p>
+      </div>
+
+      <div class="footer-links">
+        <h4>Navegação</h4>
+        <ul>
+          <li><a href="#inicio">Início</a></li>
+          <li><a href="#calculadora">Calculadora</a></li>
+          <li><a href="#dieta">Plano de Dieta</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links">
+        <h4>Privacidade</h4>
+        <ul>
+          <li><a href="#">Termos de Uso</a></li>
+          <li><a href="#">Política de Privacidade</a></li>
+          <li><a href="#">Contato</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container text-center">
+        <p>&copy; 2026 NutriTrack. Todos os direitos reservados. Saúde & Bem-estar.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- MODAL DE LOGIN / CADASTRO -->
+  <div class="modal-backdrop hidden" id="login-modal">
+    <div class="modal-card">
+      <button class="modal-close" onclick="closeLoginModal()">&times;</button>
+      
+      <div class="modal-tabs">
+        <button class="modal-tab active" id="tab-login" onclick="switchAuthTab('login')">Entrar</button>
+        <button class="modal-tab" id="tab-register" onclick="switchAuthTab('register')">Criar Conta</button>
+      </div>
+
+      <!-- Form Login -->
+      <form id="form-login" class="auth-form" onsubmit="handleAuthSubmit(event, 'login')">
+        <h3 class="auth-title">Bem-vindo de volta!</h3>
+        <p class="auth-subtitle">Acesse sua conta para visualizar suas metas salvas.</p>
+
+        <div class="form-group">
+          <label class="form-label">E-mail</label>
+          <input type="email" id="login-email" placeholder="seu@email.com" required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Senha</label>
+          <input type="password" id="login-password" placeholder="••••••••" required>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block">Entrar no NutriTrack</button>
+      </form>
+
+      <!-- Form Cadastro -->
+      <form id="form-register" class="auth-form hidden" onsubmit="handleAuthSubmit(event, 'register')">
+        <h3 class="auth-title">Crie sua Conta Grátis</h3>
+        <p class="auth-subtitle">Comece a acompanhar sua nutrição hoje mesmo.</p>
+
+        <div class="form-group">
+          <label class="form-label">Nome Completo</label>
+          <input type="text" id="reg-name" placeholder="Ex: Felipe Rosa" required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">E-mail</label>
+          <input type="email" id="reg-email" placeholder="seu@email.com" required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Senha</label>
+          <input type="password" id="reg-password" placeholder="Mínimo 6 caracteres" required minlength="6">
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block">Criar Minha Conta</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- FLOATING AI WIDGET -->
+  <div class="floating-ai-widget" onclick="openAiModal()" title="Conversar com a NutriIA">
+    <div class="ai-widget-avatar">
+      <img src="ai_avatar.png" alt="NutriIA Avatar">
+      <span class="ai-online-dot"></span>
+    </div>
+    <span class="ai-widget-label">Nossa IA ✨</span>
+  </div>
+
+  <!-- MODAL DA IA (NUTRI-IA CONVERSA COM HISTÓRICO DE CHATS) -->
+  <div class="modal-backdrop hidden" id="ai-modal">
+    <div class="modal-card ai-modal-card ai-chat-layout">
+      <button class="modal-close" onclick="closeAiModal()">&times;</button>
+      
+      <!-- BARRA LATERAL: HISTÓRICO DE CHATS -->
+      <aside class="ai-chat-sidebar" id="ai-sidebar">
+        <div class="sidebar-header">
+          <button type="button" class="btn btn-primary btn-new-chat" onclick="createNewChatSession()">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <line x1="12" y1="5" x2="12" y2="19"></line>
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+            </svg>
+            <span>Nova Conversa</span>
+          </button>
+        </div>
+
+        <div class="sidebar-history-section">
+          <span class="history-title">Histórico de Conversas</span>
+          <div class="history-list" id="chat-history-list">
+            <!-- Itens de chat salvos gerados dinamicamente via JS -->
+          </div>
+        </div>
+      </aside>
+
+      <!-- ÁREA PRINCIPAL DO CHAT -->
+      <main class="ai-chat-main">
+        <!-- Cabeçalho do Chat -->
+        <div class="ai-chat-header">
+          <div class="ai-header-profile">
+            <div class="ai-avatar-wrapper-sm">
+              <img src="ai_avatar.png" alt="NutriIA Logo" class="ai-chat-avatar">
+              <span class="ai-status-indicator"></span>
+            </div>
+            <div>
+              <h3 class="ai-chat-name" id="current-chat-title">NutriIA <span class="badge badge-ai-sm">Teste Drive 🤖</span></h3>
+              <span class="ai-chat-status">Assistente Virtual Ativa • Modo Demonstração</span>
+            </div>
+          </div>
+          
+          <div class="ai-header-actions">
+            <span class="badge badge-ai-soon">Em Breve Versão Completa 🚀</span>
+            <button type="button" class="btn-icon-close" onclick="closeAiModal()" title="Fechar">&times;</button>
+          </div>
+        </div>
+
+        <!-- Aviso Informativo -->
+        <div class="ai-notice-banner">
+          <span>💡 <strong>Histórico Ativo:</strong> Ao fechar ou iniciar uma <em>Nova Conversa</em>, seu chat atual é registrado automaticamente no histórico ao lado!</span>
+        </div>
+
+        <!-- Área de Mensagens do Chat -->
+        <div class="ai-chat-body" id="ai-chat-body">
+          
+          <!-- Sugestões Rápidas -->
+          <div class="ai-suggestions-bar">
+            <span class="sugg-title">Sugestões de Teste:</span>
+            <div class="sugg-pills">
+              <button type="button" class="sugg-pill" onclick="sendQuickMessage('Oi NutriIA')">💬 "Oi NutriIA"</button>
+              <button type="button" class="sugg-pill" onclick="sendQuickMessage('qual refeição irei fazer no lanche da tarde')">🍎 "qual refeição irei fazer no lanche da tarde"</button>
+            </div>
+          </div>
+
+          <div class="chat-messages-list" id="chat-messages-list">
+            <!-- Mensagens do chat atual serão carregadas aqui -->
+          </div>
+
+          <!-- Indicador de Digitação -->
+          <div class="typing-indicator hidden" id="ai-typing">
+            <img src="ai_avatar.png" class="msg-avatar" alt="NutriIA">
+            <div class="msg-bubble typing-bubble">
+              <span class="dot"></span>
+              <span class="dot"></span>
+              <span class="dot"></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Formulário de Envio de Mensagem -->
+        <form id="ai-chat-form" class="ai-chat-form" onsubmit="handleChatSubmit(event)">
+          <input type="text" id="ai-chat-input" placeholder="Digite 'Oi NutriIA' ou pergunte do lanche..." autocomplete="off" required>
+          <button type="submit" class="btn btn-primary btn-send-msg" title="Enviar Mensagem">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <line x1="22" y1="2" x2="11" y2="13"></line>
+              <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+            </svg>
+          </button>
+        </form>
+      </main>
+
+    </div>
+  </div>
+
+  <!-- JAVASCRIPT -->
+  <script src="app.js"></script>
+</body>
+</html>
